@@ -4,7 +4,7 @@ plugins {
     id("com.gradleup.shadow") version "8.3.0"
 }
 
-val projectVersion: String by extra("1.0.1")
+val projectVersion: String by extra("1.0.2")
 
 group = "me.pectics.papi.expansion"
 version = projectVersion

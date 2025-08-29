@@ -24,8 +24,10 @@ class CMIExExpansion : PlaceholderExpansion() {
         return BuildConfig.VERSION
     }
 
-    override fun getRequiredPlugin(): String {
-        return REQUIRED_PLUGINS.joinToString(", ")
+    override fun getRequiredPlugin(): String? {
+        // Just return the first one... fuck it
+        // PlaceholderAPI only supports one required plugin
+        return REQUIRED_PLUGINS.getOrNull(0)
     }
 
     override fun canRegister(): Boolean {
