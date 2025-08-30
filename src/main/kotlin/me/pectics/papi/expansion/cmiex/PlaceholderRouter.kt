@@ -1,5 +1,6 @@
 package me.pectics.papi.expansion.cmiex
 
+import me.clip.placeholderapi.PlaceholderAPI
 import org.bukkit.OfflinePlayer
 
 /**
@@ -121,6 +122,12 @@ class PlaceholderRouter {
             } else if (rest.isNotEmpty()) {
                 // 如果不是参数节点但有剩余部分，则匹配失败
                 continue
+            }
+
+            // 解析参数中的BracketPlaceholders
+            for (e in finalParams.entries) {
+                val v = e.value ?: continue
+                e.setValue(PlaceholderAPI.setBracketPlaceholders(player, v))
             }
 
             val context = PlaceholderContext(
