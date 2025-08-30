@@ -40,6 +40,23 @@ class CMIExExpansion : PlaceholderExpansion(), Configurable {
         return REQUIRED_PLUGINS.all { Bukkit.getPluginManager().getPlugin(it) != null }
     }
 
+    override fun onRequest(player: OfflinePlayer?, params: String): String? {
+        return PLACEHOLDER_ROUTER.dispatch(params, player)
+    }
+
+    override fun getDefaults(): Map<String?, Any?>? {
+        return mapOf(
+            "error.unknown" to ERROR_UNKNOWN,
+            "timef.concatf" to TIMEF_CONCATF,
+            "timef.yearf" to TIMEF_YEARF,
+            "timef.monthf" to TIMEF_MONTHF,
+            "timef.dayf" to TIMEF_DAYF,
+            "timef.hourf" to TIMEF_HOURF,
+            "timef.minutef" to TIMEF_MINUTEF,
+            "timef.secondf" to TIMEF_SECONDF,
+        )
+    }
+
     override fun register(): Boolean {
         setInstance(this)
         PLACEHOLDER_ROUTER
@@ -123,23 +140,6 @@ class CMIExExpansion : PlaceholderExpansion(), Configurable {
             .alias("user_rt_cd_formatted_[tr]", "user_rt_cooldown_formatted_[translations]")
             .alias("user_rt_cdf_[tr]", "user_rt_cooldown_formatted_[translations]")
         return super.register()
-    }
-
-    override fun onRequest(player: OfflinePlayer?, params: String): String? {
-        return PLACEHOLDER_ROUTER.dispatch(params, player)
-    }
-
-    override fun getDefaults(): Map<String, Any> {
-        return mapOf(
-            "error.unknown" to ERROR_UNKNOWN,
-            "timef.concatf" to TIMEF_CONCATF,
-            "timef.yearf" to TIMEF_YEARF,
-            "timef.monthf" to TIMEF_MONTHF,
-            "timef.dayf" to TIMEF_DAYF,
-            "timef.hourf" to TIMEF_HOURF,
-            "timef.minutef" to TIMEF_MINUTEF,
-            "timef.secondf" to TIMEF_SECONDF,
-        )
     }
 
 }
