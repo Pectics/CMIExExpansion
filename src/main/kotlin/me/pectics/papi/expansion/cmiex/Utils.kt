@@ -33,22 +33,22 @@ fun <N : Number> N.timef(vararg templates: String): String {
         .letIf(years > 0) { "<lang:$yearf:$years>" }
         .letIf(months > 0) {
             if (it.isEmpty()) "<lang:$monthf:$months>"
-            else "<lang:$concatf:$it:<lang:$monthf:$months>>"
+            else "<lang:$concatf:'$it':'<lang:$monthf:$months>'>"
         }
         .letIf(days > 0) {
             if (it.isEmpty()) "<lang:$dayf:$days>"
-            else "<lang:$concatf:$it:<lang:$dayf:$days>>"
+            else "<lang:$concatf:'$it':'<lang:$dayf:$days>'>"
         }
         .letIf(hours > 0) {
             if (it.isEmpty()) "<lang:$hourf:$hours>"
-            else "<lang:$concatf:$it:<lang:$hourf:$hours>>"
+            else "<lang:$concatf:'$it':'<lang:$hourf:$hours>'>"
         }
         .letIf(minutes > 0) {
             if (it.isEmpty()) "<lang:$minutef:$minutes>"
-            else "<lang:$concatf:$it:<lang:$minutef:$minutes>>"
+            else "<lang:$concatf:'$it':'<lang:$minutef:$minutes>'>"
         }
         .letIf(seconds > 0) {
             if (it.isEmpty()) "<lang:$secondf:$seconds>"
-            else "<lang:$concatf:$it:<lang:$secondf:$seconds>>"
+            else "<lang:$concatf:'$it':'<lang:$secondf:$seconds>'>"
         }
 }
