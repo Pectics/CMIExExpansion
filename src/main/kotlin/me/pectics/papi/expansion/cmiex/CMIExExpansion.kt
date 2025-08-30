@@ -1,5 +1,6 @@
 package me.pectics.papi.expansion.cmiex
 
+import me.clip.placeholderapi.PlaceholderAPI
 import me.clip.placeholderapi.expansion.Configurable
 import me.clip.placeholderapi.expansion.PlaceholderExpansion
 import org.bukkit.Bukkit
@@ -41,7 +42,9 @@ class CMIExExpansion : PlaceholderExpansion(), Configurable {
     }
 
     override fun onRequest(player: OfflinePlayer?, params: String): String? {
-        return PLACEHOLDER_ROUTER.dispatch(params, player)
+        return params
+            .let { PlaceholderAPI.setBracketPlaceholders(player, it) }
+            .let { PLACEHOLDER_ROUTER.dispatch(it, player) }
     }
 
     override fun getDefaults(): Map<String?, Any?>? {
